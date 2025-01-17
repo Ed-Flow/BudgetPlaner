@@ -1,0 +1,35 @@
+<Window x:Class="BudgetPlaner.Tagesausgaben"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        WindowStartupLocation="CenterScreen"
+        Title="Tagesausgaben Hinzufugen" Height="400" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- uberschrift -->
+        <TextBlock Text="Tagesausgaben Hinzufugen" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center" />
+
+        <!-- Datum -->
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock Text="Datum:" FontSize="16" FontWeight="SemiBold" />
+            <DatePicker x:Name="DatumPicker" SelectedDate="{x:Static sys:DateTime.Now}" />
+        </StackPanel>
+
+        <!-- Betrag -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock Text="Betrag:" FontSize="16" FontWeight="SemiBold" />
+            <TextBox x:Name="BetragTextBox" />
+        </StackPanel>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Speichern" Click="Speichern_Click" Width="100" />
+            <Button Content="Abbrechen" Click="Abbrechen_Click" Width="100" Margin="10,0,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>

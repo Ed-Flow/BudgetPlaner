@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Hauptfarben -->
+    <Color x:Key="PrimaryColor">#FF7F50</Color>
+    <!-- Coral -->
+    <Color x:Key="SecondaryColor">#000000</Color>
+    <!-- Schwarz -->
+    <Color x:Key="BackgroundColor">#F5F5F5</Color>
+    <!-- Helles Grau fur den Hintergrund -->
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" />
+</ResourceDictionary>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7Mg3uGNWMec=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\loraj\\source\\repos\\BudgetPlaner\\BudgetPlaner\\BudgetPlaner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\loraj\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

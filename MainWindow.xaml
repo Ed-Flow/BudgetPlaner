@@ -1,0 +1,69 @@
+﻿<Window x:Class="BudgetPlaner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Budget Planer" Height="600" Width="450"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource {x:Type Window}}" Cursor="">
+        
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Überschrift -->
+            <RowDefinition Height="*" />
+            <!-- Budgetinformationen -->
+            <RowDefinition Height="Auto" />
+            <!-- Buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- Überschrift -->
+        <StackPanel Grid.Row="0" Margin="10" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding Ueberschrift}" FontSize="26" FontWeight="Bold" Foreground="{StaticResource SecondaryBrush}" Margin="0,0,0,20" />
+        </StackPanel>
+
+        <!-- Budgetinformationen -->
+        <Border Grid.Row="1" Margin="20" Padding="20" BorderBrush="{StaticResource PrimaryBrush}" BorderThickness="2" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <!-- Labels -->
+                    <ColumnDefinition Width="2*" />
+                    <!-- Werte -->
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Profil -->
+                <TextBlock Text="Profil:" FontWeight="Bold" FontSize="18" Grid.Row="0" Grid.Column="0" />
+                <TextBlock Text="{Binding AktivesProfil.Name}" FontSize="18" Grid.Row="0" Grid.Column="1" Margin="10,0,0,10" />
+
+                <!-- Gehalt -->
+                <TextBlock Text="Gehalt:" FontWeight="Bold" FontSize="18" Grid.Row="1" Grid.Column="0" />
+                <TextBlock Text="{Binding AktivesProfil.Gehalt, StringFormat={}{0:N2} €}" FontSize="18" Grid.Row="1" Grid.Column="1" Margin="10,0,0,10" />
+
+                <!-- Fixkosten -->
+                <TextBlock Text="Fixkosten:" FontWeight="Bold" FontSize="18" Grid.Row="2" Grid.Column="0" />
+                <TextBlock Text="{Binding MonatlicheFixkosten}" FontSize="18" Grid.Row="2" Grid.Column="1" Margin="10,0,0,10" />
+
+                <!-- Budget -->
+                <TextBlock Text="Budget:" FontWeight="Bold" FontSize="18" Grid.Row="3" Grid.Column="0" />
+                <TextBlock Text="{Binding VerfügbaresMonatsbudget}" FontSize="18" Grid.Row="3" Grid.Column="1" Margin="10,0,0,10" />
+
+                <!-- Tagesbudget -->
+                <TextBlock Text="Tagesbudget:" FontWeight="Bold" FontSize="18" Grid.Row="4" Grid.Column="0" />
+                <TextBlock Text="{Binding Tagesbudget}" FontSize="18" Grid.Row="4" Grid.Column="1" Margin="10,0,0,0" />
+            </Grid>
+        </Border>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" Margin="20">
+            <Button Content="Tagesausgaben Hinzufügen" Click="TagesausgabenHinzufuegen_Click" Width="250" Height="50" FontSize="18" />
+            <Button Content="Tagesausgaben Anzeigen" Click="TagesausgabenAnzeigen_Click" Width="250" Height="50" FontSize="18" />
+            <Button Content="Zurück zur Profilauswahl" Click="ZurueckZurProfilAuswahl_Click" Width="250" Height="50" FontSize="18" />
+        </StackPanel>
+    </Grid>
+</Window>

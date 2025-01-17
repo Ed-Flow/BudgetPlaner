@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="BudgetPlaner.RechnungNeueingabe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Rechnung bearbeiten" Height="200" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Rechnung bearbeiten" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" />
+
+            <TextBlock Text="Beschreibung:" FontWeight="Bold" />
+            <TextBox Text="{Binding Beschreibung}" />
+
+            <TextBlock Text="Betrag:" FontWeight="Bold" Margin="0,10,0,0" />
+            <TextBox Text="{Binding Betrag}" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Button Content="Speichern" Width="100" Margin="5" Click="Speichern_Click" />
+                <Button Content="Abbrechen" Width="100" Margin="5" Click="Abbrechen_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
