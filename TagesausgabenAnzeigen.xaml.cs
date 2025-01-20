@@ -34,7 +34,7 @@ namespace BudgetPlaner
 
         private void Filter_Changed(object sender, EventArgs e)
         {
-            // Aktuellen Monat und Jahr aus den Filtern holen
+            // Sicherstellen, dass Monat und Jahr ausgewählt sind
             if (MonatFilter.SelectedItem == null || JahrFilter.SelectedItem == null)
                 return;
 
@@ -55,6 +55,7 @@ namespace BudgetPlaner
                 .ToList();
 
             // Liste der Tagesausgaben aktualisieren
+            TagesausgabenListe.ItemsSource = null; // Setze die Datenquelle zurück
             TagesausgabenListe.ItemsSource = gefilterteAusgaben.Select(kvp =>
                 $"{kvp.Key}: {kvp.Value:F2} €");
 
@@ -65,12 +66,9 @@ namespace BudgetPlaner
         private void ZeigeMonatlicheGesamtausgaben(IEnumerable<KeyValuePair<string, decimal>> ausgaben)
         {
             decimal gesamtausgaben = ausgaben.Sum(kvp => kvp.Value);
+            Console.WriteLine($"Gesamtausgaben berechnet: {gesamtausgaben} €");
             GesamtausgabenTextBlock.Text = $"Gesamtausgaben im Monat: {gesamtausgaben:F2} €";
         }
 
-        private void Filter_Changed(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

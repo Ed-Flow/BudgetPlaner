@@ -32,6 +32,7 @@ namespace BudgetPlaner
         {
             get
             {
+                // Fixkosten berechnen
                 var fixkosten = AktivesProfil?.Rechnungen?.Sum(r => r.Betrag) ?? 0;
 
                 // Nur Tagesausgaben des aktuellen Monats berücksichtigen
@@ -39,12 +40,22 @@ namespace BudgetPlaner
                     .Where(kvp => IstImAktuellenMonat(kvp.Key))
                     .Sum(kvp => kvp.Value) ?? 0;
 
+                // Verbleibendes Budget berechnen
                 var verbleibendesBudget = (AktivesProfil?.Gehalt ?? 0) - fixkosten - tagesausgaben;
-                var tageImMonat = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
-                return (verbleibendesBudget / tageImMonat).ToString("N2") + " €";
+                // Verbleibende Tage im Monat (inklusive heute)
+                var heutigesDatum = DateTime.Now;
+                var letzterTagDesMonats = new DateTime(heutigesDatum.Year, heutigesDatum.Month, DateTime.DaysInMonth(heutigesDatum.Year, heutigesDatum.Month));
+                var verbleibendeTage = (letzterTagDesMonats - heutigesDatum).Days + 1;
+
+                // Tagesbudget berechnen
+                var tagesbudget = verbleibendesBudget / verbleibendeTage;
+
+                // Ergebnis formatieren und zurückgeben
+                return tagesbudget.ToString("N2") + " €";
             }
         }
+
 
         public string Ueberschrift { get; private set; }
 

@@ -11,9 +11,7 @@ namespace BudgetPlaner
         public Tagesausgaben()
         {
             InitializeComponent();
-
-            // Setze das aktuelle Datum standardmäßig ein
-            Loaded += Tagesausgaben_Loaded;
+            Loaded += Tagesausgaben_Loaded; // sicherstellen, dass UI geladen ist
         }
 
         private void Tagesausgaben_Loaded(object sender, RoutedEventArgs e)
@@ -32,8 +30,13 @@ namespace BudgetPlaner
                 return;
             }
 
+            // Setze das Datum und den Betrag
             Datum = DatumPicker.SelectedDate.Value.ToShortDateString();
             Betrag = betrag;
+
+            // Konvertiere die Werte, falls nötig
+            // DatumPicker.SelectedDate = DateTime.Parse(datum); // Beispiel für das Parsen des Datums
+            // BetragTextBox.Text = betrag.ToString("F2"); // Formatierung des Betrags
 
             DialogResult = true;
             Close();
